@@ -2,8 +2,6 @@ import React, { useState } from 'react'
 
 import './App.css'
 
-import Switch from 'react-switch'
-
 import logo from './images/logo.png'
 import man from './images/man.png'
 import abajur from './images/abajur.png'
@@ -16,13 +14,13 @@ import { GlobalStyle } from './globalStyle'
 import { darkTheme, ligthTheme } from './tema/themes'
 
 export function App(props) {
-    const [theme, setTheme] = useState(localStorage.getItem("tema"))
+    const [theme, setTheme] = useState(localStorage.getItem('tema'))
+    
+    localStorage.setItem("tema", theme || 'dark')
 
     const toggleTheme = () => {
         setTheme(theme === 'light' ? 'dark' : 'light')
     }
-
-    localStorage.setItem("tema", theme)
 
     return (
         <ThemeProvider theme={ theme === 'light' ? darkTheme : ligthTheme }>
@@ -38,14 +36,15 @@ export function App(props) {
                                 <li><a href="#">Clients</a></li>
                             </ul>
                             {
-                                theme === 'dark' ? 
-                                <img 
-                                onClick={toggleTheme} 
-                                src={darkMode} alt="Escolha entre tema dark e light" /> :
+                                theme === 'light' ? 
+                                    <img 
+                                    onClick={toggleTheme} 
+                                    src={lightMode} alt="Escolha entre tema dark e light" /> :
+
+                                    <img 
+                                    onClick={toggleTheme} 
+                                    src={darkMode} alt="Escolha entre tema dark e light" /> 
                                 
-                                <img 
-                                onClick={toggleTheme} 
-                                src={lightMode} alt="Escolha entre tema dark e light" />  
                             }            
                         </div>
                        

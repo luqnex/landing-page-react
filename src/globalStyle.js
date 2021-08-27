@@ -5,7 +5,7 @@ export const GlobalStyle = createGlobalStyle `
         background-color: ${({ theme }) => theme.body};
         color: ${({ theme }) => theme.text};
 
-        transition: .6s;
+        transition: .3s;
     }
 
     button {
